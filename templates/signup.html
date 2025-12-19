@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/css/output.css">
+    <title>Signup</title>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-base-200 px-4">
+    <div class="w-full max-w-md bg-base-100 p-6 rounded-xl shadow-lg">
+        <h1 class="text-2xl font-bold text-center mb-4">Signup</h1>
+        <p class="text-sm text-muted text-center mb-6">
+            Welcome — Login to continue to Vault
+        </p>
+
+        <form class="space-y-4" id="Signup_Form">
+            <div class="form-control">
+                <label class="label"><span class="label-text">Username</span></label>
+                <div class="relative">
+                    <img class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 opacity-80 z-10" src="/public/icons/user.svg" alt=""/>
+                    <input class="input input-bordered w-full pl-10" type="text" name="username" placeholder="Username" required />
+                </div>
+            </div>
+
+            <div class="form-control">
+                <label class="label"><span class="label-text">Password</span></label>
+                <div class="relative">
+                    <img class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 opacity-80 z-10" src="/public/icons/key.svg" alt=""/>
+                    <input class="input input-bordered w-full pl-10 pr-10" id="password" type="password" name="password" placeholder="Password" required />
+                    
+                    <button class="btn btn-ghost btn-circle btn-sm absolute right-1 top-1/2 -translate-y-1/2 z-30" id="icon_btn1" type="button">
+                        <img class="w-5 h-5" src="/public/icons/eye.svg" alt="Show Password"/>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-control">
+                <label class="label"><span class="label-text">Confirm Password</span></label>
+                <div class="relative">
+                    <img class="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 opacity-80 z-10" src="/public/icons/key.svg" alt=""/>
+                    <input class="input input-bordered w-full pl-10 pr-10" id="confirm_password" type="password" name="confirm_password" placeholder="Confirm Password" required />
+                    
+                    <button class="btn btn-ghost btn-circle btn-sm absolute right-1 top-1/2 -translate-y-1/2 z-30" id="icon_btn2" type="button">
+                        <img class="w-5 h-5" src="/public/icons/eye.svg" alt="Show Password"/>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-3 pt-4">
+                <button type="submit" class="btn btn-primary w-full">Sign Up</button>
+                <div class="divider text-xs opacity-50">OR</div>
+                <button type="button" class="btn btn-outline btn-secondary w-full">Login</button>
+                
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('icon_btn1').addEventListener('click', (event) => {
+            event.preventDefault();
+            
+            const password_input = document.getElementById('password');
+            const icon_button_1 = event.currentTarget;
+
+            if (password_input.type === 'password') {
+                password_input.type = 'text';
+                // Inject the eye-slash icon when text is visible
+                icon_button_1.innerHTML = '<img class="w-5 h-5" src="/public/icons/eye-slash.svg" alt="Hide Password"/>';
+            } else {
+                password_input.type = 'password'; 
+                // Inject the eye icon when hidden
+                icon_button_1.innerHTML = '<img class="w-5 h-5" src="/public/icons/eye.svg" alt="Show Password"/>';
+            }
+        });
+
+        document.getElementById('icon_btn2').addEventListener('click', (event) => {
+            event.preventDefault();
+            
+            const confirm_password_input = document.getElementById('confirm_password');
+            const icon_button_2 = event.currentTarget;
+
+            if (confirm_password_input.type === 'password') {
+                confirm_password_input.type = 'text';
+                // Inject the eye-slash icon when text is visible
+                icon_button_2.innerHTML = '<img class="w-5 h-5" src="/public/icons/eye-slash.svg" alt="Hide Password"/>';
+            } else {
+                confirm_password_input.type = 'password'; 
+                // Inject the eye icon when hidden
+                icon_button_2.innerHTML = '<img class="w-5 h-5" src="/public/icons/eye.svg" alt="Show Password"/>';
+            }
+
+        });
+    </script>
+
+    <!-- signup handler -->
+    <script src="/public/js/signup.js"></script>
+</body>
+</html>
